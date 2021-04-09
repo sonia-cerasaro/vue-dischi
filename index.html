@@ -10,35 +10,38 @@
 
     <div id="root">
 
-        <div class="flip-card">
+        <div class="flip-card"
+        v-for="disk in disks">
           <div class="flip-card-inner">
             <div class="flip-card-front"
-            style="background-image: url('https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg');"
-            >
+            :style="`background-image: url('${disk.poster}');`">
 
             </div>
             <div class="flip-card-back">
 
               <div class="card-container-info">
                 <div class="card-info">
-                  <div>
-                    <span class="title">New Jeresey</span>
-                    <span class="year">1998</span>
-                  </div>
+                  <span class="author">
+                    {{ disk.author }}
+                  </span>
 
-                  <span class="author">Bon Jovi</span>
-                  <span class="genre">Rock</span>
+                  <span class="title">
+                    {{ disk.title}}
+
+                  </span>
+                  <span class="year">
+                    {{ disk.year }}
+                  </span>
+
+                  <span class="genre">
+                    {{ disk.genre }}
+                  </span>
 
                 </div>
               </div>
-
-
-
             </div>
           </div>
         </div>
-
-
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
