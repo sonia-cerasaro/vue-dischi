@@ -5,65 +5,54 @@
   box-sizing: border-box;
 }
 
-div.container {
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  background-color: transparent;
   width: 300px;
+  height: 300px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
-div.card {
-  perspective: 1000px;
-}
-
-.card.inner {
+/* This container is needed to position the front and back side */
+.flip-card-inner {
   position: relative;
-  transition: transform 0.6s;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
   transform-style: preserve-3d;
 }
 
-div.card:hover .card-inner{
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-div.card .card-cover {
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
   position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
   width: 100%;
   padding-top: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
-div.card .card-container-info {
-  position: absolute;
+/* Style the back side */
+.flip-card-back {
   width: 100%;
-  padding-top: 100%;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.5);
+
+  background-color: dodgerblue;
+  color: white;
   transform: rotateY(180deg);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.card-info{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.author {
-  font-size: 14px;
-  font-style: italic;
-}
-
-.genre {
-  font-weight: bold;
 }
